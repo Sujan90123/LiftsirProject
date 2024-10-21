@@ -5,12 +5,33 @@ namespace LiftsirProject
         bool isMovingUp = false;
         bool isMovingDown = false;
         int liftSpeed = 10;
-        int x = 10;
+        bool isClosing = false;
+        bool isOpening = false;
+        int doorSpeed = 10;
+
+        int doorMaxOpenWidth;
+        int doorMaxCLoseWidth;
 
 
         public Form1()
         {
             InitializeComponent();
+            doorMaxOpenWidth = mainElevator.Width / 2 - 50;
+            doorMaxCLoseWidth = mainElevator.Width / 2 ;
+        }
+        private void btn_Open_Click(object sender, EventArgs e)
+        {
+            isOpening = true;
+            isClosing = false;
+            doorTime.Start();
+            btn_Close.Enabled = false;
+        }
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            isOpening = false;
+            isClosing = true;
+            doorTime.Start();
+            btn_Open.Enabled = false;
         }
         public void button3_click(object sender, EventArgs e)
         {
@@ -38,6 +59,7 @@ namespace LiftsirProject
                 else
                 {
                     liftTimer.Stop();
+                    mainElevator.Top = 0;
                     button3.Enabled = true;
 
                 }
@@ -58,9 +80,77 @@ namespace LiftsirProject
                 }
             }
         }
+        private void door_timer_Tick( object sender, EventArgs e)
+        {
+            if (mainElevator.Top != 0)
+            {
+                if (isOpening)
+                {
+                    if (doorLeft_G.Left > doorMaxOpenWidth / 2)
+                    {
+                        doorLeft_G.Left -= doorSpeed;
+                        doorRight_G.Left += doorSpeed;
+                    }
+                    else
+                    {
+                        doorTime.Stop();
+                        btn_Close.Enabled = true;
+                    }
+
+                }
+                if (isClosing)
+                {
+                    if (doorLeft_G.Right < mainElevator.Width + doorMaxCLoseWidth / 2 - 80)
+                    {
+                        doorLeft_G.Left += doorSpeed;
+                        doorRight_G.Left -= doorSpeed;
+                    }
+                    else
+                    {
+                        doorTime.Stop();
+                        btn_Open.Enabled = true;
+                    }
+
+                }
+            }
+            else
+                
+            {
+                if (isOpening)
+                {
+                    if (door1_CloseLeft.Left > doorMaxOpenWidth / 2)
+                    {
+                        door1_CloseLeft.Left -= doorSpeed;
+                        door1_CloseRight.Left += doorSpeed;
+                    }
+                    else
+                    {
+                        doorTime.Stop();
+                        btn_Close.Enabled = true;
+                    }
+
+                }
+                if (isClosing)
+                {
+                    if (door1_CloseLeft.Right < mainElevator.Width + doorMaxCLoseWidth / 2 - 80)
+                    {
+                        door1_CloseLeft.Left += doorSpeed;
+                        door1_CloseRight.Left -= doorSpeed;
+                    }
+                    else
+                    {
+                        doorTime.Stop();
+                        btn_Open.Enabled = true;
+                    }
+
+                }
+
+            }
+        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+            
 
         }
 
