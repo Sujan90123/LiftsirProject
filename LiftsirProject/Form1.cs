@@ -18,6 +18,15 @@ namespace LiftsirProject
             InitializeComponent();
             doorMaxOpenWidth = mainElevator.Width / 2 - 50;
             doorMaxCLoseWidth = mainElevator.Width / 2 ;
+            dataGridView1.ColumnCount = 2;
+            dataGridView1.Columns[0].Name = "Time";
+            dataGridView1.Columns[1].Name = "Events";
+        }
+        private void dataEvents(string message)
+        {
+            string currentTime = DateTime.Now.ToString("hh:mm:ss");
+            dataGridView1.Rows.Add(currentTime,message);
+
         }
         private void btn_Open_Click(object sender, EventArgs e)
         {
@@ -25,6 +34,7 @@ namespace LiftsirProject
             isClosing = false;
             doorTime.Start();
             btn_Close.Enabled = false;
+            dataEvents("lift is khuldaii xa");
         }
         private void btn_Close_Click(object sender, EventArgs e)
         {
@@ -32,6 +42,7 @@ namespace LiftsirProject
             isClosing = true;
             doorTime.Start();
             btn_Open.Enabled = false;
+            dataEvents("lift is banda ");
         }
         public void button3_click(object sender, EventArgs e)
         {
@@ -39,6 +50,7 @@ namespace LiftsirProject
             isMovingDown = false;
             liftTimer.Start();
             button3.Enabled = false;
+            dataEvents("lift is going up");
         } 
         public void button2_click(object sender, EventArgs e)
         {
@@ -46,6 +58,8 @@ namespace LiftsirProject
             isMovingDown = true;
             liftTimer.Start();
             button2.Enabled = false;
+            
+            dataEvents("lift is going down");
         }
         public void lifttimer_Tick(object sender, EventArgs e)
         {
@@ -61,6 +75,7 @@ namespace LiftsirProject
                     liftTimer.Stop();
                     mainElevator.Top = 0;
                     button3.Enabled = true;
+
 
                 }
             }

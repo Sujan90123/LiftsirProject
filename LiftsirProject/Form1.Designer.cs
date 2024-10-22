@@ -64,18 +64,20 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(895, 73);
+            dataGridView1.Location = new Point(895, 12);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(471, 571);
+            dataGridView1.Size = new Size(659, 835);
             dataGridView1.TabIndex = 2;
             // 
             // button2
             // 
             button2.BackColor = Color.Blue;
             button2.Font = new Font("Times New Roman", 28F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(83, 228);
+            button2.Location = new Point(83, 361);
             button2.Name = "button2";
             button2.Size = new Size(89, 74);
             button2.TabIndex = 0;
@@ -87,7 +89,7 @@
             // 
             button3.BackColor = Color.BlanchedAlmond;
             button3.Font = new Font("Times New Roman", 28F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.Location = new Point(83, 317);
+            button3.Location = new Point(83, 473);
             button3.Name = "button3";
             button3.Size = new Size(89, 72);
             button3.TabIndex = 1;
@@ -101,7 +103,7 @@
             btn_Close.BackgroundImage = (Image)resources.GetObject("btn_Close.BackgroundImage");
             btn_Close.BackgroundImageLayout = ImageLayout.Stretch;
             btn_Close.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Close.Location = new Point(31, 412);
+            btn_Close.Location = new Point(21, 569);
             btn_Close.Name = "btn_Close";
             btn_Close.Size = new Size(89, 73);
             btn_Close.TabIndex = 2;
@@ -114,7 +116,7 @@
             btn_Open.BackgroundImage = (Image)resources.GetObject("btn_Open.BackgroundImage");
             btn_Open.BackgroundImageLayout = ImageLayout.Stretch;
             btn_Open.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Open.Location = new Point(141, 412);
+            btn_Open.Location = new Point(143, 569);
             btn_Open.Name = "btn_Open";
             btn_Open.Size = new Size(82, 73);
             btn_Open.TabIndex = 3;
@@ -128,9 +130,9 @@
             panel1.Controls.Add(btn_Close);
             panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
-            panel1.Location = new Point(605, 73);
+            panel1.Location = new Point(605, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(246, 571);
+            panel1.Size = new Size(246, 835);
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
             // 
@@ -165,7 +167,7 @@
             doorLeft_G.BackgroundImageLayout = ImageLayout.Stretch;
             doorLeft_G.Location = new Point(130, 475);
             doorLeft_G.Name = "doorLeft_G";
-            doorLeft_G.Size = new Size(136, 372);
+            doorLeft_G.Size = new Size(148, 372);
             doorLeft_G.TabIndex = 5;
             doorLeft_G.TabStop = false;
             // 
@@ -173,9 +175,9 @@
             // 
             doorRight_G.BackgroundImage = (Image)resources.GetObject("doorRight_G.BackgroundImage");
             doorRight_G.BackgroundImageLayout = ImageLayout.Stretch;
-            doorRight_G.Location = new Point(265, 475);
+            doorRight_G.Location = new Point(272, 475);
             doorRight_G.Name = "doorRight_G";
-            doorRight_G.Size = new Size(136, 372);
+            doorRight_G.Size = new Size(140, 372);
             doorRight_G.TabIndex = 6;
             doorRight_G.TabStop = false;
             // 
@@ -187,7 +189,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1469, 859);
+            ClientSize = new Size(1588, 859);
             Controls.Add(doorRight_G);
             Controls.Add(doorLeft_G);
             Controls.Add(door1_CloseRight);
