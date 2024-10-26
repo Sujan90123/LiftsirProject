@@ -37,12 +37,14 @@
             btn_Close = new Button();
             btn_Open = new Button();
             panel1 = new Panel();
+            btnDelete = new Button();
             liftTimer = new System.Windows.Forms.Timer(components);
             door1_CloseLeft = new PictureBox();
             door1_CloseRight = new PictureBox();
             doorLeft_G = new PictureBox();
             doorRight_G = new PictureBox();
             doorTime = new System.Windows.Forms.Timer(components);
+            EmergencyAlarmButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)door1_CloseLeft).BeginInit();
@@ -56,9 +58,9 @@
             mainElevator.BackColor = Color.Chocolate;
             mainElevator.BackgroundImage = (Image)resources.GetObject("mainElevator.BackgroundImage");
             mainElevator.BackgroundImageLayout = ImageLayout.Stretch;
-            mainElevator.Location = new Point(130, 475);
+            mainElevator.Location = new Point(130, 565);
             mainElevator.Name = "mainElevator";
-            mainElevator.Size = new Size(276, 372);
+            mainElevator.Size = new Size(286, 435);
             mainElevator.TabIndex = 0;
             mainElevator.UseVisualStyleBackColor = false;
             // 
@@ -70,12 +72,13 @@
             dataGridView1.Location = new Point(895, 12);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(659, 835);
+            dataGridView1.Size = new Size(659, 846);
             dataGridView1.TabIndex = 2;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // button2
             // 
-            button2.BackColor = Color.Blue;
+            button2.BackColor = Color.Bisque;
             button2.Font = new Font("Times New Roman", 28F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.Location = new Point(83, 361);
             button2.Name = "button2";
@@ -125,7 +128,8 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Black;
+            panel1.BackColor = Color.LightSlateGray;
+            panel1.Controls.Add(EmergencyAlarmButton);
             panel1.Controls.Add(btn_Open);
             panel1.Controls.Add(btn_Close);
             panel1.Controls.Add(button3);
@@ -136,6 +140,18 @@
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
             // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.BlueViolet;
+            btnDelete.ForeColor = SystemColors.ControlText;
+            btnDelete.Location = new Point(603, 869);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(112, 52);
+            btnDelete.TabIndex = 7;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            // 
             // liftTimer
             // 
             liftTimer.Interval = 50;
@@ -145,9 +161,9 @@
             // 
             door1_CloseLeft.BackgroundImage = (Image)resources.GetObject("door1_CloseLeft.BackgroundImage");
             door1_CloseLeft.BackgroundImageLayout = ImageLayout.Stretch;
-            door1_CloseLeft.Location = new Point(130, -6);
+            door1_CloseLeft.Location = new Point(161, 65);
             door1_CloseLeft.Name = "door1_CloseLeft";
-            door1_CloseLeft.Size = new Size(136, 372);
+            door1_CloseLeft.Size = new Size(117, 365);
             door1_CloseLeft.TabIndex = 3;
             door1_CloseLeft.TabStop = false;
             // 
@@ -155,19 +171,20 @@
             // 
             door1_CloseRight.BackgroundImage = (Image)resources.GetObject("door1_CloseRight.BackgroundImage");
             door1_CloseRight.BackgroundImageLayout = ImageLayout.Stretch;
-            door1_CloseRight.Location = new Point(261, -6);
+            door1_CloseRight.Location = new Point(276, 65);
             door1_CloseRight.Name = "door1_CloseRight";
-            door1_CloseRight.Size = new Size(144, 372);
+            door1_CloseRight.Size = new Size(117, 365);
             door1_CloseRight.TabIndex = 4;
             door1_CloseRight.TabStop = false;
+            door1_CloseRight.Click += door1_CloseRight_Click;
             // 
             // doorLeft_G
             // 
             doorLeft_G.BackgroundImage = (Image)resources.GetObject("doorLeft_G.BackgroundImage");
             doorLeft_G.BackgroundImageLayout = ImageLayout.Stretch;
-            doorLeft_G.Location = new Point(130, 475);
+            doorLeft_G.Location = new Point(157, 630);
             doorLeft_G.Name = "doorLeft_G";
-            doorLeft_G.Size = new Size(148, 372);
+            doorLeft_G.Size = new Size(121, 362);
             doorLeft_G.TabIndex = 5;
             doorLeft_G.TabStop = false;
             // 
@@ -175,9 +192,9 @@
             // 
             doorRight_G.BackgroundImage = (Image)resources.GetObject("doorRight_G.BackgroundImage");
             doorRight_G.BackgroundImageLayout = ImageLayout.Stretch;
-            doorRight_G.Location = new Point(272, 475);
+            doorRight_G.Location = new Point(276, 627);
             doorRight_G.Name = "doorRight_G";
-            doorRight_G.Size = new Size(140, 372);
+            doorRight_G.Size = new Size(117, 365);
             doorRight_G.TabIndex = 6;
             doorRight_G.TabStop = false;
             // 
@@ -185,11 +202,23 @@
             // 
             doorTime.Tick += door_timer_Tick;
             // 
+            // EmergencyAlarmButton
+            // 
+            EmergencyAlarmButton.BackgroundImage = (Image)resources.GetObject("EmergencyAlarmButton.BackgroundImage");
+            EmergencyAlarmButton.BackgroundImageLayout = ImageLayout.Stretch;
+            EmergencyAlarmButton.Location = new Point(99, 692);
+            EmergencyAlarmButton.Name = "EmergencyAlarmButton";
+            EmergencyAlarmButton.Size = new Size(55, 47);
+            EmergencyAlarmButton.TabIndex = 4;
+            EmergencyAlarmButton.UseVisualStyleBackColor = true;
+            EmergencyAlarmButton.Click += EmergencyAlarmButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1588, 859);
+            ClientSize = new Size(1588, 1001);
+            Controls.Add(btnDelete);
             Controls.Add(doorRight_G);
             Controls.Add(doorLeft_G);
             Controls.Add(door1_CloseRight);
@@ -199,6 +228,7 @@
             Controls.Add(mainElevator);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)door1_CloseLeft).EndInit();
@@ -223,5 +253,7 @@
         private PictureBox doorLeft_G;
         private PictureBox doorRight_G;
         private System.Windows.Forms.Timer doorTime;
+        private Button btnDelete;
+        private Button EmergencyAlarmButton;
     }
 }
